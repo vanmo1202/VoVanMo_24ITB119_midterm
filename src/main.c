@@ -1,18 +1,17 @@
-#include <stdio.h>
+#include "listing.h"
+#include "options.h"
+
+#include <locale.h>
 
 int main(int argc, char *argv[])
 {
-    printf("Du an Midterm - Implement ls(1)\n");
+    setlocale(LC_ALL, "");
+    LsOptions options;
+    int first_operand;
 
-    if (argc == 1) {
-        printf("Chua truyen doi so. Thu muc mac dinh se la: .\n");
-    } else {
-        printf("Cac doi so da nhan:\n");
-
-        for (int i = 1; i < argc; i++) {
-            printf("  argv[%d] = %s\n", i, argv[i]);
-        }
+    if (parse_options(argc, argv, &options, &first_operand) != 0) {
+        return 1;
     }
 
-    return 0;
+    return list_operands(argc, argv, first_operand, &options);
 }
