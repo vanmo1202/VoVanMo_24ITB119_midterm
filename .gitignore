@@ -1,0 +1,16 @@
+# Chuong trinh da bien dich
+/myls
+
+# Object va dependency files
+*.o
+*.d
+
+# File debug
+core
+core.*
+vgcore.*
+
+# File tam cua trinh soan thao
+*.swp
+*.swo
+*~
