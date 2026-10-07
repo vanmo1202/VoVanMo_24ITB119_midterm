@@ -11,7 +11,7 @@
 
 Dự án xây dựng một phiên bản rút gọn của lệnh UNIX `ls(1)` bằng ngôn ngữ C, bám theo manual page được cung cấp trong đề Midterm.
 
-Chương trình sử dụng các system/library interfaces phổ biến trên UNIX/Linux như:
+Chương trình sử dụng các system/library interfaces phổ biến trên UNIX như:
 
 - `opendir()`, `readdir()`, `closedir()` để duyệt thư mục.
 - `stat()`, `lstat()` để lấy metadata của file.
@@ -227,12 +227,5 @@ Makefile bật các warning quan trọng:
 -Wall -Wextra -Wpedantic
 ```
 
-Project đã được kiểm tra với AddressSanitizer và UndefinedBehaviorSanitizer cho các nhóm chức năng chính để phát hiện lỗi memory/undefined behavior.
 
-## 10. Ghi chú về khác biệt nền tảng
 
-Manual được cung cấp là manual của NetBSD, trong khi project được build trên Linux/Ubuntu. Các file type chuẩn như regular file, directory, symlink, block/character device, socket và FIFO được hỗ trợ đầy đủ.
-
-Whiteout chỉ được nhận diện khi nền tảng cung cấp macro `S_ISWHT`. Các trạng thái archive đặc thù của NetBSD không được Linux `stat(2)` cung cấp trực tiếp, vì vậy không thể tái tạo chúng một cách portable trên Ubuntu chỉ bằng POSIX/Linux metadata.
-
-Project chỉ triển khai các option nằm trong manual của đề bài và không cố gắng sao chép toàn bộ GNU `ls`.
